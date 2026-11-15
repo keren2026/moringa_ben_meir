@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>מורינגה לחיים – מוצרי מורינגה טבעיים</title>
+<style>
+:root{--bg:#f7f5ee;--surface:#fffdf8;--text:#23301f;--muted:#5e6b57;--green:#3f6b3a;--green-d:#2c4d29;--leaf:#dfead4;--accent:#c9a24b;--line:#e3dfd0;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161d14;--surface:#1f2a1c;--text:#eef2e8;--muted:#a9b6a0;--green:#8fbf7f;--green-d:#b5dba6;--leaf:#2a3a26;--accent:#d9b660;--line:#33422f;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#161d14;--surface:#1f2a1c;--text:#eef2e8;--muted:#a9b6a0;--green:#8fbf7f;--green-d:#b5dba6;--leaf:#2a3a26;--accent:#d9b660;--line:#33422f;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Heebo","Segoe UI",Arial,sans-serif;line-height:1.65}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-weight:800;font-size:20px;color:var(--green-d)}
+.logo span{color:var(--accent)}
+.nav a{color:var(--text);text-decoration:none;margin-inline-start:18px;font-size:15px}
+.sharebtn{background:transparent;color:var(--green-d);border:1.5px solid var(--green);border-radius:999px;padding:7px 14px;font:inherit;cursor:pointer;margin-inline-start:10px}
+.toast{position:fixed;bottom:calc(24px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--green-d);color:var(--bg);padding:10px 20px;border-radius:10px;z-index:50;font-size:15px;opacity:0;pointer-events:none;transition:.25s}
+.toast.show{opacity:1}
+.cartbtn{background:var(--green);color:#fff;border:0;border-radius:999px;padding:8px 16px;font:inherit;cursor:pointer}
+.hero{padding:64px 0 48px;display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center}
+.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.2;margin:0 0 14px;color:var(--green-d)}
+.hero p{color:var(--muted);font-size:18px;margin:0 0 24px}
+.btn{display:inline-block;background:var(--green);color:#fff;text-decoration:none;border:0;border-radius:10px;padding:12px 24px;font:inherit;font-weight:600;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--green-d);border:1.5px solid var(--green);margin-inline-start:8px}
+.leafart{aspect-ratio:1;max-width:340px;margin-inline:auto;width:100%;background:var(--leaf);border-radius:50% 50% 50% 8%;position:relative;overflow:hidden}
+.leafart i{position:absolute;background:var(--green);opacity:.85;border-radius:100% 0}
+.leafart i:nth-child(1){width:46%;height:46%;top:14%;right:14%;transform:rotate(15deg)}
+.leafart i:nth-child(2){width:38%;height:38%;top:46%;right:46%;transform:rotate(80deg);opacity:.6}
+.leafart i:nth-child(3){width:30%;height:30%;top:52%;right:12%;transform:rotate(-30deg);background:var(--accent);opacity:.8}
+.leafart i:nth-child(4){width:26%;height:26%;top:12%;right:56%;transform:rotate(110deg);opacity:.5}
+section{padding:48px 0}
+h2{font-size:30px;margin:0 0 8px;color:var(--green-d)}
+.sub{color:var(--muted);margin:0 0 28px}
+.cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.cat{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:18px;text-align:start;font:inherit;color:var(--text);cursor:pointer;transition:.15s}
+.cat:hover,.cat.on{border-color:var(--green);background:var(--leaf)}
+.cat b{display:block;font-size:17px;margin:6px 0 4px}
+.cat small{color:var(--muted);font-size:14px;line-height:1.4;display:block}
+.cat .ic{font-size:26px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:20px}
+.chip{background:var(--surface);border:1px solid var(--line);color:var(--text);padding:6px 14px;border-radius:999px;font:inherit;font-size:14px;cursor:pointer}
+.chip.on{background:var(--green);color:#fff;border-color:var(--green)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.thumb{height:130px;background:var(--leaf);display:flex;align-items:center;justify-content:center;font-size:52px}
+.card .body{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{margin:0;font-size:18px}
+.card p{margin:0;color:var(--muted);font-size:14.5px;flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tags span{font-size:12px;background:var(--leaf);color:var(--green-d);padding:2px 8px;border-radius:999px}
+.row{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.price{font-weight:800;font-size:19px}
+.add{background:var(--green);color:#fff;border:0;border-radius:8px;padding:7px 14px;font:inherit;cursor:pointer}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+.fact b{display:block;font-size:17px;color:var(--green-d);margin-bottom:4px}
+.fact p{margin:0;color:var(--muted);font-size:14.5px}
+.use{background:var(--leaf);border-radius:18px;padding:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.use b{color:var(--green-d)}
+.use p{margin:4px 0 0;font-size:14.5px;color:var(--muted)}
+.note{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding:24px 0;margin-top:24px}
+footer{padding:28px 0 40px;color:var(--muted);font-size:14px;text-align:center}
+.drawer{position:fixed;inset:0 auto 0 0;width:min(360px,100%);background:var(--surface);border-inline-end:1px solid var(--line);z-index:40;transform:translateX(-105%);transition:.25s;padding:calc(20px + env(safe-area-inset-top,0px)) 20px calc(20px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column}
+.drawer.open{transform:none}
+.drawer ul{list-style:none;padding:0;margin:16px 0;flex:1;overflow:auto}
+.drawer li{display:flex;justify-content:space-between;gap:8px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.drawer li button{background:none;border:0;color:var(--muted);cursor:pointer;font-size:16px}
+.tot{display:flex;justify-content:space-between;font-weight:800;font-size:18px;margin-bottom:12px}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:36px}.nav a.hide{display:none}.leafart{max-width:220px}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+<div class="logo">מורינגה<span> לחיים</span> 🌿</div>
+<div><a class="hide" href="#needs">לפי צורך</a><a class="hide" href="#shop">חנות</a><a class="hide" href="#why">על הצמח</a>
+<button class="sharebtn" id="shareBtn">🔗 שיתוף</button><button class="cartbtn" id="cartOpen">סל (<span id="cnt">0</span>)</button></div>
+</div></header>
+
+<main>
+<div class="wrap hero">
+<div>
+<h1>העוצמה של עץ הפלאים, בצורה פשוטה ויומיומית</h1>
+<p>אבקות, כמוסות, תה ושמן ממורינגה אורגנית – מסודרים לפי מה שחשוב לך: חיסון, אנרגיה, התאוששות ועוד.</p>
+<a class="btn" href="#needs">מצא את המוצר שלך</a><a class="btn ghost" href="#shop">לכל המוצרים</a>
+</div>
+<div class="leafart" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+</div>
+
+<section id="needs"><div class="wrap">
+<h2>במה אפשר לתמוך? בחרו לפי צורך</h2>
+<p class="sub">מורינגה עשירה בוויטמינים, מינרלים ונוגדי חמצון, ולכן משמשת באורח חיים בריא למגוון מטרות. לחצו על צורך כדי לראות מוצרים מתאימים.</p>
+<div class="cats" id="cats"></div>
+</div></section>
+
+<section id="shop"><div class="wrap">
+<h2>המוצרים שלנו</h2>
+<div class="bar" id="bar"></div>
+<div class="grid" id="grid"></div>
+</div></section>
+
+<section id="why"><div class="wrap">
+<h2>למה מורינגה?</h2>
+<p class="sub">עץ המורינגה (Moringa oleifera) גדל באזורים חמים ומוכר כאחד הצמחים העשירים בתזונה.</p>
+<div class="facts">
+<div class="fact"><b>ויטמינים ומינרלים</b><p>מקור לוויטמין C, A, סידן, ברזל ואשלגן.</p></div>
+<div class="fact"><b>נוגדי חמצון</b><p>מכילה פוליפנולים וקוורצטין, שמקובלים בתזונה מאוזנת.</p></div>
+<div class="fact"><b>חלבון צמחי</b><p>עלים מיובשים מספקים חומצות אמינו וסיבים תזונתיים.</p></div>
+<div class="fact"><b>גידול אורגני</b><p>עלים מיובשים בעדינות לשימור הערכים התזונתיים.</p></div>
+</div>
+</div></section>
+
+<section><div class="wrap">
+<h2>איך משלבים ביומיום?</h2><p class="sub"></p>
+<div class="use">
+<div><b>🥤 שייק או מיץ</b><p>חצי עד כפית אבקה ליום, ואפשר להעלות בהדרגה.</p></div>
+<div><b>🍵 תה חם או קר</b><p>עלים בטבילה של 5 דקות, עם לימון ודבש.</p></div>
+<div><b>💊 כמוסות</b><p>הדרך הנוחה לימים עמוסים, לפי הוראות היצרן.</p></div>
+<div><b>✨ שמן לעור</b><p>כמה טיפות על עור או שיער לחים.</p></div>
+</div>
+<p class="note">הערה חשובה: המידע באתר אינו מהווה ייעוץ רפואי. המוצרים הם תוספי תזונה ואינם תחליף לתרופות או לטיפול רפואי. במצבי הריון, הנקה, מחלה כרונית או נטילת תרופות (בעיקר סוכרת, לחץ דם ודילול דם), יש להיוועץ ברופא לפני שימוש. מחירים ומוצרים להמחשה בלבד.</p>
+</div></section>
+</main>
+<footer><div class="wrap">© 2026 מורינגה לחיים · נעשה בטבע, באהבה</div></footer>
+
+<div class="toast" id="toast" role="status"></div>
+<aside class="drawer" id="drawer" aria-label="סל קניות">
+<div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:20px">הסל שלי</b><button class="chip" id="cartClose">סגירה</button></div>
+<ul id="items"></ul>
+<div class="tot"><span>סה״כ</span><span id="total">₪0</span></div>
+<button class="btn" id="checkout">המשך לתשלום</button>
+</aside>
+
+<script>
+var CATS=[
+{id:"immune",ic:"🛡️",t:"לחיזוק מערכת החיסון",d:"ויטמין C, אבץ ונוגדי חמצון לשגרה בריאה"},
+{id:"recover",ic:"🏥",t:"לשיקום אחרי אשפוז",d:"תזונה עשירה ועדינה בתקופת החלמה, בהמלצת רופא"},
+{id:"energy",ic:"⚡",t:"לאנרגיה וריכוז",d:"תמיכה בחיוניות לאורך היום, בלי קפאין"},
+{id:"skin",ic:"✨",t:"לעור, שיער וציפורניים",d:"טיפוח מבפנים ומבחוץ"},
+{id:"balance",ic:"⚖️",t:"לאיזון ולניהול משקל",d:"שובע, סיבים ותזונה מאוזנת"},
+{id:"mom",ic:"🤱",t:"לאמהות ולנשים",d:"שימוש מסורתי בתקופת הנקה ולאחר לידה"},
+{id:"joints",ic:"🦴",t:"לעצמות ומפרקים",d:"סידן, מגנזיום ונוגדי דלקת טבעיים"}
+];
+var P=[
+{id:1,e:"🥬",n:"אבקת מורינגה אורגנית 150 גרם",d:"עלים טחונים דק לשייקים, מיצים ומאפים.",p:59,c:["immune","energy","balance","joints"]},
+{id:2,e:"💊",n:"כמוסות מורינגה 90 יח׳",d:"500 מ״ג בכל כמוסה, נוח לימים עמוסים.",p:72,c:["immune","energy","joints"]},
+{id:3,e:"🍵",n:"תה עלי מורינגה ולימון",d:"שקיקי תה ארומטי, 20 יח׳, קליל ומרענן.",p:34,c:["immune","balance","mom"]},
+{id:4,e:"🥣",n:"תערובת החלמה: מורינגה ושיבולת שועל",d:"תערובת עדינה ועשירה בחלבון ובסיבים, מוכנה לערבוב.",p:79,c:["recover","energy"]},
+{id:5,e:"💧",n:"שמן זרעי מורינגה קר-סחוט 50 מ״ל",d:"שמן קל לעור, לשיער ולציפורניים.",p:88,c:["skin"]},
+{id:6,e:"🍃",n:"מארז טיפוח: שמן ואבקה",d:"טיפוח מבפנים ומבחוץ במארז אחד.",p:129,c:["skin","immune"]},
+{id:7,e:"🌸",n:"תה מורינגה לאמהות",d:"תערובת עם שומר ופרחי קמומיל, בהתאם למסורת.",p:39,c:["mom"]},
+{id:8,e:"🫙",n:"חפיסת פעימות אנרגיה: מורינגה ותמרים",d:"חטיף טבעי ללא תוספת סוכר, 12 יח׳.",p:64,c:["energy","balance","recover"]},
+{id:9,e:"📦",n:"מארז חורף לחיסון",d:"אבקה, תה וכמוסות לחצי שנה בשגרה בריאה.",p:169,c:["immune","joints","recover"]}
+];
+var cur="all",cart=[];
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function renderCats(){var b=document.getElementById("cats");b.textContent="";CATS.forEach(function(c){var x=el("button","cat"+(cur===c.id?" on":""));x.appendChild(el("span","ic",c.ic));x.appendChild(el("b",null,c.t));x.appendChild(el("small",null,c.d));x.onclick=function(){setCat(c.id,true)};b.appendChild(x)})}
+function renderBar(){var b=document.getElementById("bar");b.textContent="";var all=[{id:"all",t:"הכל"}].concat(CATS);all.forEach(function(c){var x=el("button","chip"+(cur===c.id?" on":""),c.t);x.onclick=function(){setCat(c.id,false)};b.appendChild(x)})}
+function renderGrid(){var g=document.getElementById("grid");g.textContent="";P.filter(function(p){return cur==="all"||p.c.indexOf(cur)>-1}).forEach(function(p){
+var k=el("div","card");k.appendChild(el("div","thumb",p.e));var b=el("div","body");b.appendChild(el("h3",null,p.n));b.appendChild(el("p",null,p.d));
+var t=el("div","tags");p.c.forEach(function(id){var c=CATS.filter(function(x){return x.id===id})[0];t.appendChild(el("span",null,c.t))});b.appendChild(t);
+var r=el("div","row");r.appendChild(el("span","price","₪"+p.p));var a=el("button","add","הוספה לסל");a.onclick=function(){cart.push(p.id);renderCart();openCart(true)};r.appendChild(a);b.appendChild(r);k.appendChild(b);g.appendChild(k)})}
+function setCat(id,scroll){cur=cur===id&&scroll?"all":id;renderCats();renderBar();renderGrid();if(scroll)document.getElementById("shop").scrollIntoView()}
+function renderCart(){var ul=document.getElementById("items");ul.textContent="";var s=0;cart.forEach(function(id,i){var p=P.filter(function(x){return x.id===id})[0];s+=p.p;var li=el("li");li.appendChild(el("span",null,p.n+" · ₪"+p.p));var d=el("button",null,"✕");d.setAttribute("aria-label","הסרה");d.onclick=function(){cart.splice(i,1);renderCart()};li.appendChild(d);ul.appendChild(li)});
+if(!cart.length)ul.appendChild(el("li",null,"הסל ריק"));
+document.getElementById("total").textContent="₪"+s;document.getElementById("cnt").textContent=cart.length}
+function openCart(o){document.getElementById("drawer").classList.toggle("open",o)}
+document.getElementById("cartOpen").onclick=function(){openCart(true)};
+document.getElementById("cartClose").onclick=function(){openCart(false)};
+document.getElementById("checkout").onclick=function(){alert("זהו אתר להמחשה. כאן יחובר מנגנון תשלום.")};
+var SITE="https://claude.ai/artifact/YcFN7jptH84fnS5JrsjrvA";
+function toast(m){var t=document.getElementById("toast");t.textContent=m;t.classList.add("show");setTimeout(function(){t.classList.remove("show")},2200)}
+document.getElementById("shareBtn").onclick=function(){
+var d={title:"מורינגה לחיים",text:"מוצרי מורינגה טבעיים לפי צורך",url:SITE};
+if(navigator.share){navigator.share(d).catch(function(){})}
+else{try{navigator.clipboard.writeText(SITE).then(function(){toast("הקישור הועתק")},function(){prompt("העתיקו את הקישור:",SITE)})}catch(e){prompt("העתיקו את הקישור:",SITE)}}};
+renderCats();renderBar();renderGrid();renderCart();
+</script>
+</body>
+</html>
